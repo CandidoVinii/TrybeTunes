@@ -20,14 +20,16 @@ class Header extends Component {
   render() {
     const { getName, loading } = this.state;
     return (
-      <div data-testid="header-component">
+      <header data-testid="header-component">
         {
           loading
             ? <Loading />
             : ''
         }
-        <p data-testid="header-user-name">{ getName }</p>
-      </div>
+        <p>
+          <strong data-testid="header-user-name">{ getName }</strong>
+        </p>
+      </header>
     );
   }
 }
