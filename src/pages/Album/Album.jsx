@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import { getFavoriteSongs } from '../../services/favoriteSongsAPI';
 import Header from '../Header/Header';
 import getMusic from '../../services/musicsAPI';
 import Loading from '../Loading/Loading';
 import MusicCard from '../MusicCard/MusicCard';
 
 class Album extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       loading: true,
     };
@@ -15,17 +16,31 @@ class Album extends Component {
 
   async componentDidMount() {
     const { match } = this.props;
-    const response = await getMusic(match.params.id);
-    const filtered = response.filter((item) => item.kind === 'song');
+    const request = await getMusic(match.params.id);
+    const filtered = request.filter((music) => music.kind === 'song');
+    const favorites = await getFavoriteSongs();
     this.setState({
+      musics: filtered,
+      album: request[0],
       loading: false,
-      album: response[0],
-      musica: filtered,
+      favs: favorites,
     });
   }
 
+  getFavs = async () => {
+    const favorites = await getFavoriteSongs();
+    this.setState({ favs: favorites });
+  }
+
+  isFavoriteSong = (id) => {
+    const { favs } = this.state;
+    const validation = favs.some((musicId) => musicId.trackId === id);
+    if (validation) return true;
+    return false;
+  }
+
   render() {
-    const { album, loading, musica } = this.state;
+    const { album, loading, musics } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -40,13 +55,15 @@ class Album extends Component {
                 </div>
                 <div>
                   {
-                    musica.map((track) => (
+                    musics.map((track) => (
                       <MusicCard
                         key={ track.trackId }
                         trackName={ track.trackName }
                         previewUrl={ track.previewUrl }
                         trackId={ track.trackId }
                         music={ track }
+                        getFavs={ this.getFavs }
+                        isFavorite={ this.isFavoriteSong(track.trackId) }
                       />
                     ))
                   }
@@ -58,6 +75,8 @@ class Album extends Component {
     );
   }
 }
+
+// https://pt-br.reactjs.org/docs/typechecking-with-proptypes.html
 
 Album.propTypes = {
   match: propTypes.shape({
