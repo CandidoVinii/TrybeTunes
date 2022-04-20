@@ -16,9 +16,13 @@ class Album extends Component {
 
   async componentDidMount() {
     const { match } = this.props;
+    // console.log(match);
     const request = await getMusic(match.params.id);
+    // console.log(request);
     const filtered = request.filter((music) => music.kind === 'song');
+    // console.log(filtered);
     const favorites = await getFavoriteSongs();
+    // console.log(favorites)
     this.setState({
       musics: filtered,
       album: request[0],
@@ -30,10 +34,12 @@ class Album extends Component {
   getFavs = async () => {
     const favorites = await getFavoriteSongs();
     this.setState({ favs: favorites });
+    // console.log(favorites);
   }
 
   isFavoriteSong = (id) => {
     const { favs } = this.state;
+    // console.log(favs);
     const validation = favs.some((musicId) => musicId.trackId === id);
     if (validation) return true;
     return false;
