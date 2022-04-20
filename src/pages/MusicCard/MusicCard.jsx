@@ -13,19 +13,6 @@ class MusicCard extends Component {
     };
   }
 
-  handleChange = ({ target }) => {
-    const { checked } = target;
-    this.setState({ favorite: checked }, async () => {
-      const { getFavs } = this.props;
-      if (checked) {
-        this.addSongFav();
-      } else {
-        this.removeSongFav();
-      }
-      await getFavs();
-    });
-  }
-
   addSongFav = () => {
     this.setState({ loading: true }, async () => {
       const { music } = this.props;
@@ -36,9 +23,21 @@ class MusicCard extends Component {
 
   removeSongFav = () => {
     this.setState({ loading: true }, async () => {
-      const { music } = this.props;
+      const { music, getFavs } = this.props;
       await removeSong(music);
+      await getFavs();
       this.setState({ loading: false });
+    });
+  }
+
+  handleChange = ({ target }) => {
+    const { checked } = target;
+    this.setState({ favorite: checked }, async () => {
+      if (checked) {
+        this.addSongFav();
+      } else {
+        this.removeSongFav();
+      }
     });
   }
 
@@ -60,23 +59,27 @@ class MusicCard extends Component {
           <code>audio</code>
           .
         </audio>
-        <input
-          type="checkbox"
-          onChange={ this.handleChange }
-          checked={ favorite }
-          data-testid={ `checkbox-music-${trackId}` }
-        />
+        <label htmlFor={ trackName }>
+          Favorita
+          <input
+            id={ trackName }
+            type="checkbox"
+            onChange={ this.handleChange }
+            checked={ favorite }
+            data-testid={ `checkbox-music-${trackId}` }
+          />
+        </label>
       </div>
     );
   }
 }
 
 MusicCard.propTypes = {
+  getFavs: propTypes.func.isRequired,
   trackName: propTypes.string.isRequired,
   previewUrl: propTypes.string.isRequired,
   trackId: propTypes.number.isRequired,
   music: propTypes.shape({}).isRequired,
-  getFavs: propTypes.func.isRequired,
   isFavorite: propTypes.bool.isRequired,
 };
 

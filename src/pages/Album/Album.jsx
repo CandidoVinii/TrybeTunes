@@ -37,7 +37,7 @@ class Album extends Component {
     // console.log(favorites);
   }
 
-  isFavoriteSong = (id) => {
+  isFavorite = (id) => {
     const { favs } = this.state;
     // console.log(favs);
     const validation = favs.some((musicId) => musicId.trackId === id);
@@ -62,15 +62,17 @@ class Album extends Component {
                 <div>
                   {
                     musics.map((track) => (
-                      <MusicCard
-                        key={ track.trackId }
-                        trackName={ track.trackName }
-                        previewUrl={ track.previewUrl }
-                        trackId={ track.trackId }
-                        music={ track }
-                        getFavs={ this.getFavs }
-                        isFavorite={ this.isFavoriteSong(track.trackId) }
-                      />
+                      <div key={ track.trackId }>
+                        <img src={ track.artworkUrl100 } alt={ track.trackName } />
+                        <MusicCard
+                          key={ track.trackId }
+                          trackName={ track.trackName }
+                          previewUrl={ track.previewUrl }
+                          trackId={ track.trackId }
+                          music={ track }
+                          isFavorite={ this.isFavorite(track.trackId) }
+                        />
+                      </div>
                     ))
                   }
                 </div>
