@@ -27,20 +27,20 @@ class Album extends Component {
       musics: filtered,
       album: request[0],
       loading: false,
-      favs: favorites,
+      favoriteSong: favorites,
     });
   }
 
   getFavs = async () => {
     const favorites = await getFavoriteSongs();
-    this.setState({ favs: favorites });
+    this.setState({ favoriteSong: favorites });
     // console.log(favorites);
   }
 
   isFavorite = (id) => {
-    const { favs } = this.state;
+    const { favoriteSong } = this.state;
     // console.log(favs);
-    const validation = favs.some((musicId) => musicId.trackId === id);
+    const validation = favoriteSong.some((musicId) => musicId.trackId === id);
     if (validation) return true;
     return false;
   }
@@ -70,6 +70,7 @@ class Album extends Component {
                           previewUrl={ track.previewUrl }
                           trackId={ track.trackId }
                           music={ track }
+                          getFavs={ this.getFavs }
                           isFavorite={ this.isFavorite(track.trackId) }
                         />
                       </div>
