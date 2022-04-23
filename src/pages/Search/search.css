@@ -1,0 +1,49 @@
+.input-search {
+  position: absolute;
+  width: 519px;
+  height: 45px;
+  left: 380px;
+  top: 277px;
+
+  /* white */
+
+  background: #FFFFFF;
+  /* gray 700 */
+
+  border: 1px solid #3D495C;
+  border-radius: 6px;
+}
+
+.button-search {
+  position: absolute;
+  width: 134px;
+  height: 45px;
+  left: 926px;
+  top: 277px;
+
+  /* royal blue 500 */
+
+  background: #003BE5;
+  border-radius: 2px;
+  color: white;
+}
+
+.album-search {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 1px;
+  grid-row-gap: 1px;
+  padding: 200px;
+}
+
+.album {
+  text-align: center;
+}
+
+.name {
+  display: flex;
+  flex: row;
+  align-items: center;
+  text-align: center;
+}

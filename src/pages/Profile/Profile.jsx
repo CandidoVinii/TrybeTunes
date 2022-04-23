@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import Loading from '../Loading/Loading';
 import { getUser } from '../../services/userAPI';
+import './profile.css';
 
 class Profile extends Component {
   constructor() {
@@ -51,16 +52,21 @@ class Profile extends Component {
                   src={ userImage }
                   alt={ userName }
                 />
-                <h1>
+                <p className='profile-p'>Nome:</p>
+                <strong>
                   { userName }
-                </h1>
-                <p>
+                </strong>
+                <p className='profile-p'>Email:</p>
+                <strong>
                   { userEmail }
-                </p>
-                <p>
+                </strong>
+                <p className='profile-p'>Descrição:</p>
+                <strong>
                   { userDescription }
-                </p>
-                <Link exact to="/profile/edit">Editar perfil</Link>
+                </strong>
+                <button className='editar-perfil'>
+                  <Link className='link' exact to="/profile/edit">Editar perfil</Link>
+                </button>
               </div>
             )
         }

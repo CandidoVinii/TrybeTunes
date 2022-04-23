@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import searchAlbumsAPI from '../../services/searchAlbumsAPI';
 import Loading from '../Loading/Loading';
+import './search.css';
 
 class Search extends Component {
   constructor() {
