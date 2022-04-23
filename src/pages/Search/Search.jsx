@@ -38,28 +38,30 @@ class Search extends Component {
     return (
       <div data-testid="page-search">
         <Header />
-        <form action="">
+        <form className="form-search" action="">
           {
             loading
               ? <Loading />
               : (
-                <>
+                <div className="div-form">
                   <input
                     type="text"
                     placeholder="Digite o nome do artista"
                     data-testid="search-artist-input"
+                    className="input-search"
                     onChange={ this.handleChange }
                     value={ artistName }
                   />
                   <button
                     type="button"
                     data-testid="search-artist-button"
+                    className="button-search"
                     disabled={ artistName.length < min }
                     onClick={ this.setAlbum }
                   >
                     Procurar
                   </button>
-                </>
+                </div>
               )
           }
 
@@ -68,26 +70,31 @@ class Search extends Component {
           {
             albuns
               ? (
-                <>
-                  <h2>
-                    {`Resultado de álbuns de: ${search}`}
-                  </h2>
+                <div className="album-search">
+                  <div className="name">
+                    <h2>
+                      {`Resultado de álbuns de: ${search}`}
+                    </h2>
+                  </div>
                   {
                     albuns.map((album) => (
-                      <div key={ album.collectionId }>
+                      <div
+                        key={ album.collectionId }
+                        className="album"
+                      >
                         <h3>{ album.collectionName }</h3>
-                        <p>{ album.artistName }</p>
                         <Link
                           to={ `/album/${album.collectionId}` }
                           data-testid={ `link-to-album-${album.collectionId}` }
                         >
                           Album
                         </Link>
+                        <p>{ album.artistName }</p>
                         <img src={ album.artworkUrl100 } alt={ album.collectionName } />
                       </div>
                     ))
                   }
-                </>
+                </div>
               )
               : ''
           }

@@ -38,10 +38,13 @@ class Favorites extends Component {
           loading
             ? <Loading />
             : (
-              <div>
+              <div className="album-div">
                 {
                   favs.map((item) => (
-                    <div key={ item.trackName }>
+                    <div
+                      key={ item.trackName }
+                      className="map-card"
+                    >
                       <img src={ item.artworkUrl100 } alt={ item.trackName } />
                       <MusicCard
                         key={ item.trackId }

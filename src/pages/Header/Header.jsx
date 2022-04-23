@@ -27,13 +27,39 @@ class Header extends Component {
             ? <Loading />
             : ''
         }
-        <p>
-          <strong data-testid="header-user-name">{ getName }</strong>
-        </p>
-        <nav>
-          <Link data-testid="link-to-search" exact to="/search">Search</Link>
-          <Link data-testid="link-to-favorites" exact to="/favorites">Favorites</Link>
-          <Link data-testid="link-to-profile" exact to="/profile">Profile</Link>
+        <div className="div-name">
+          <p
+            data-testid="header-user-name"
+            className="p-div"
+          >
+            { getName }
+          </p>
+        </div>
+        <nav className="nav-header">
+          <Link
+            data-testid="link-to-search"
+            exact
+            to="/search"
+            className="search-nav"
+          >
+            Search
+          </Link>
+          <Link
+            data-testid="link-to-favorites"
+            exact
+            to="/favorites"
+            className="favorites-nav"
+          >
+            Favorites
+          </Link>
+          <Link
+            data-testid="link-to-profile"
+            exact
+            to="/profile"
+            className="profile-nav"
+          >
+            Profile
+          </Link>
         </nav>
       </header>
     );

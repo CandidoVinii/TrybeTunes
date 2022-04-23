@@ -44,8 +44,9 @@ class Profile extends Component {
           loading
             ? <Loading />
             : (
-              <div>
+              <div className="div-profile">
                 <img
+                  className="img-perfil"
                   data-testid="profile-image"
                   src={ userImage }
                   alt={ userName }

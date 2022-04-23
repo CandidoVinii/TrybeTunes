@@ -31,33 +31,39 @@ class Login extends Component {
     const min = 3;
 
     return (
-      <div data-testid="page-login">
-        {
-          logged ? <Redirect to="/search" /> : ''
-        }
-        <form action="">
-          <label htmlFor="userName">
-            Nome:
-            <input
-              name="userName"
-              type="text"
-              onChange={ this.handleChange }
-              value={ userName }
-              data-testid="login-name-input"
-            />
-          </label>
-          <button
-            type="button"
-            data-testid="login-submit-button"
-            disabled={ userName.length < min }
-            onClick={ this.userSet }
-          >
-            Entrar
-          </button>
-        </form>
-        {
-          loadingScreen ? <Loading /> : ''
-        }
+      <div>
+        <div className="div-image">
+          {
+            loadingScreen ? <Loading /> : ''
+          }
+        </div>
+        <div className="login-div" data-testid="page-login">
+          {
+            logged ? <Redirect to="/search" /> : ''
+          }
+          <form className="login-form" action="">
+            <label htmlFor="userName">
+              <input
+                className="login-input"
+                name="userName"
+                type="text"
+                placeholder="Nome"
+                onChange={ this.handleChange }
+                value={ userName }
+                data-testid="login-name-input"
+              />
+            </label>
+            <button
+              className="login-button"
+              type="button"
+              data-testid="login-submit-button"
+              disabled={ userName.length < min }
+              onClick={ this.userSet }
+            >
+              Entrar
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
