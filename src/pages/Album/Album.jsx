@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import getMusic from '../../services/musicsAPI';
 import Loading from '../Loading/Loading';
 import MusicCard from '../MusicCard/MusicCard';
+import './album.css';
 
 class Album extends Component {
   constructor(props) {

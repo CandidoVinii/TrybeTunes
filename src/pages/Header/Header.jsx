@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../../services/userAPI';
 import Loading from '../Loading/Loading';
+import './header.css';
 
 class Header extends Component {
   constructor() {
@@ -22,12 +23,16 @@ class Header extends Component {
     const { getName, loading } = this.state;
     return (
       <header data-testid="header-component">
-        {
+
+        <div className="div-name">
+          <div className='img-logo'>
+            <hr />
+          </div>
+          {
           loading
             ? <Loading />
             : ''
-        }
-        <div className="div-name">
+          }
           <p
             data-testid="header-user-name"
             className="p-div"

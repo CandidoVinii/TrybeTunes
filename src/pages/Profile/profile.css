@@ -1,0 +1,40 @@
+.img-perfil {
+  width: 250px;
+  border-radius: 150px;
+  padding: 10px
+}
+
+.div-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.profile-p {
+  right: 81.6%;
+  text-align: right;
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #3D495C;
+  padding: 5px;
+}
+
+strong {
+  padding: 5px;
+}
+
+.editar-perfil {
+  border: 0.4px solid blue;
+  width: 95px;
+  height: 30px;
+}
+
+.link {
+  text-decoration: none;
+  list-style: none;
+}

@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { getUser, updateUser } from '../../services/userAPI';
 import Header from '../Header/Header';
 import Loading from '../Loading/Loading';
+import './profile-edit.css';
 
 class ProfileEdit extends Component {
   constructor() {
@@ -97,52 +98,61 @@ class ProfileEdit extends Component {
         {
           loading ? <Loading />
             : (
-              <form action="">
+              <form className='div-edit'>
+                <img
+                src={ image }
+                className="img-perfil"
+                alt={ name } 
+                />
+                <input
+                  value={ image }
+                  onChange={ this.handleChange }
+                  name="image"
+                  type="text"
+                  className="img-input"
+                  placeholder="Coloque a URL da foto aqui"
+                  data-testid="edit-input-image"
+                />
                 <label htmlFor="name">
-                  Nome:
+                  Nome
+                </label>
                   <input
                     onChange={ this.handleChange }
                     value={ name }
                     name="name"
+                    className="name-input"
                     type="text"
                     placeholder="Digite seu nome aqui"
                     data-testid="edit-input-name"
                   />
-                </label>
+                
                 <label htmlFor="email">
-                  Email:
+                  Email
+                </label>
                   <input
                     onChange={ this.handleChange }
                     value={ email }
                     name="email"
+                    className="email-input"
                     type="text"
                     placeholder="Digite seu email aqui"
                     data-testid="edit-input-email"
                   />
-                </label>
                 <label htmlFor="description">
                   Descrição:
+                </label>
                   <textarea
                     onChange={ this.handleChange }
                     value={ description }
                     name="description"
+                    placeholder="Sobre mim"
+                    className="description-input"
                     data-testid="edit-input-description"
                   />
-                </label>
-                <label htmlFor="image">
-                  Foto:
-                  <input
-                    value={ image }
-                    onChange={ this.handleChange }
-                    name="image"
-                    type="text"
-                    placeholder="Coloque a URL da foto aqui"
-                    data-testid="edit-input-image"
-                  />
-                </label>
                 <button
                   type="button"
                   data-testid="edit-button-save"
+                  className="button-save"
                   disabled={ disabled }
                   onClick={ this.handleClick }
                 >
