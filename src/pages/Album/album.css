@@ -18,3 +18,39 @@ p{
 .map-card {
   text-align: center;
 }
+
+.pricipal-div {
+  display: flex;
+  flex-direction: column ;
+  justify-content: center;
+  align-items: center;
+  background-color: #DADADA;
+  border-radius: 10px;
+  width: 600px;
+  height: 300px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-album {
+  width: 100px;
+}
+
+.pricipal-div > h2 {
+  padding: 25px;
+  background: #DADADA;
+}
+
+.pricipal-div > p {
+  padding: 25px;
+  background: #DADADA ;
+}
