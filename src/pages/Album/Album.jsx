@@ -55,9 +55,12 @@ class Album extends Component {
           loading
             ? <Loading />
             : (
-              <div>
-                <h2 data-testid="artist-name">{ album.artistName }</h2>
-                <p data-testid="album-name">{ album.collectionName }</p>
+              <div className="container">
+                <div className="pricipal-div">
+                  <h2 data-testid="artist-name">{ album.artistName }</h2>
+                  <img className="img-album" src={ album.artworkUrl100 } alt={ album.trackName } />
+                  <p data-testid="album-name">{ album.collectionName }</p>
+                </div>
                 <div className="album-div">
                   {
                     musics.map((track) => (
@@ -65,7 +68,6 @@ class Album extends Component {
                         key={ track.trackId }
                         className="map-card"
                       >
-                        <img src={ track.artworkUrl100 } alt={ track.trackName } />
                         <MusicCard
                           key={ track.trackId }
                           trackName={ track.trackName }
