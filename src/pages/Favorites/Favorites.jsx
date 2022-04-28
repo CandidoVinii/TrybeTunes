@@ -45,9 +45,11 @@ class Favorites extends Component {
                       key={ item.trackName }
                       className="map-card"
                     >
-                      <img src={ item.artworkUrl100 } alt={ item.trackName } />
                       <MusicCard
                         key={ item.trackId }
+                        artworkUrl100={ item.artworkUrl100 }
+                        artistName={ item.artistName }
+                        collectionName={ item.collectionName }
                         trackName={ item.trackName }
                         previewUrl={ item.previewUrl }
                         trackId={ item.trackId }

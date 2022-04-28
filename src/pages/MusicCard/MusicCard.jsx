@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { addSong, removeSong } from '../../services/favoriteSongsAPI';
 import Loading from '../Loading/Loading';
+import './musicCard.css';
 
 class MusicCard extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class MusicCard extends Component {
   }
 
   render() {
-    const { trackName, previewUrl, trackId } = this.props;
+    const { trackName, previewUrl, trackId, artistName, collectionName, artworkUrl100 } = this.props;
     const { loading, favorite } = this.state;
     return (
       <div>
@@ -52,24 +53,32 @@ class MusicCard extends Component {
             ? <Loading />
             : ''
         }
-        <p>{ trackName }</p>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
-          <track kind="captions" />
-          O seu navegador não suporta o elemento
-          {' '}
-          <code>audio</code>
-          .
-        </audio>
-        <label htmlFor={ trackName }>
-          Favorita
-          <input
-            id={ trackName }
-            type="checkbox"
-            onChange={ this.handleChange }
-            checked={ favorite }
-            data-testid={ `checkbox-music-${trackId}` }
-          />
-        </label>
+        <div className="card-content">
+          <img src={ artworkUrl100 } alt={ artistName } />
+          <hr />
+          <h2>{ artistName }</h2>
+          <span>{ collectionName }</span>
+          <p>{ trackName }</p>
+          <audio data-testid="audio-component" src={ previewUrl } controls>
+            <track kind="captions" />
+            O seu navegador não suporta o elemento
+            {' '}
+            <code>audio</code>
+            .
+          </audio>
+        </div>
+        <div className="input-container">
+          <label htmlFor={ trackName }>
+            Favorita
+            <input
+              id={ trackName }
+              type="checkbox"
+              onChange={ this.handleChange }
+              checked={ favorite }
+              data-testid={ `checkbox-music-${trackId}` }
+            />
+          </label>
+        </div>
       </div>
     );
   }

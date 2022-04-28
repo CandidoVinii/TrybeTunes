@@ -1,0 +1,41 @@
+.card-content {
+  width: fit-content;
+  background: #dadada;
+  border-radius: 25px;
+  height: 350px;
+}
+.card-content > img {
+  margin-top: 10px;
+}
+
+.card-content > h2 {
+  background: #dadada;
+  margin-top: 10px;
+}
+
+.card-content > span {
+  background: #dadada;
+  margin-top: 5px;
+}
+
+.card-content > p {
+  background: #dadada;
+  margin-top: 15px;
+
+}
+
+.card-content > audio {
+  background: #dadada;
+  margin-top: 10px;
+}
+
+.input-container {
+  margin-top: -20px;
+  background: #dadada;
+  border-radius:  0 0 25px 25px;
+}
+
+.input-container > label {
+  background: #dadada;
+  border-radius: 25px;
+}
